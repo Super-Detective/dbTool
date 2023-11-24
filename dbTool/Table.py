@@ -1,6 +1,6 @@
-import csv
 import argparse
 import pymysql
+from tabulate import tabulate
 from .config import DATABASE_CONFIG
 
 def connect_to_database(database_name):
@@ -8,43 +8,35 @@ def connect_to_database(database_name):
     config['database'] = database_name
     return pymysql.connect(**config)
 
-def update_data(connection, table, filepath, unique_column):
+def get_all_tables(connection):
     try:
         with connection.cursor() as cursor:
-            # 打开 CSV 文件并读取数据
-            with open(filepath, 'r') as csv_file:
-                csv_reader = csv.DictReader(csv_file)
-                
-                # 执行更新操作
-                for row in csv_reader:
-                    # 获取记录的 ID
-                    record_id = row[unique_column]
-                    
-                    # 构建 SET 子句
-                    set_clause = ', '.join([f"`{column}` = '{value}'" for column, value in row.items() if column != unique_column])
-                    
-                    # 构建 UPDATE 语句
-                    sql_query = f"UPDATE `{table}` SET {set_clause} WHERE `{unique_column}` = '{record_id}';"
-                    cursor.execute(sql_query)
+            # 获取所有表的查询
+            sql_query = 'SHOW TABLES;'
+            cursor.execute(sql_query)
 
-            # 提交事务
-            connection.commit()
+            # 获取查询结果
+            result = cursor.fetchall()
 
-        print(f"Data updated in `{table}` from {filepath} using `{unique_column}` as the identifier")
+            return result
 
     except Exception as e:
-        print(f"Error updating data: {e}")
+        # 处理异常
+        print(f"Error: {e}")
+        return None
+
+def display_tables(tables):
+    if tables:
+        print(tabulate(tables, headers=['Tables'], tablefmt='grid'))
+
+# get_tables_script.py
 
 def main():
-
     # 创建参数解析器
-    parser = argparse.ArgumentParser(description='Database Update Tool')
+    parser = argparse.ArgumentParser(description='Database Query Tool')
 
     # 添加命令行参数
     parser.add_argument('-database', type=str, help='Database name', required=True)
-    parser.add_argument('-table', type=str, help='Table name', required=True)
-    parser.add_argument('-filepath', type=str, help='Filepath with data to update', required=True)
-    parser.add_argument('-unique_column', type=str, help='Column name for the identifier', required=True)
 
     # 解析命令行参数
     args = parser.parse_args()
@@ -53,8 +45,11 @@ def main():
     connection = connect_to_database(args.database)
 
     if connection:
-        # 更新数据
-        update_data(connection, args.table, args.filepath, args.unique_column)
+        # 获取所有表
+        tables = get_all_tables(connection)
+
+        # 显示结果
+        display_tables(tables)
 
         # 关闭数据库连接
         connection.close()
