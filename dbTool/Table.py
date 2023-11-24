@@ -57,3 +57,32 @@ def main():
 if __name__ == "__main__":
     main()
 
+# def main():
+#     # 创建参数解析器
+#     parser = argparse.ArgumentParser(description='Database Query Tool')
+
+#     # 添加命令行参数
+#     parser.add_argument('-host', type=str, help='Database host', default='localhost')
+#     parser.add_argument('-port', type=int, help='Database port', default=3306)
+#     parser.add_argument('-user', type=str, help='Database user', default='mingl')
+#     parser.add_argument('-password', type=str, help='Database password', default="Asd081312+")
+#     parser.add_argument('-database', type=str, help='Database name')
+
+#     # 解析命令行参数
+#     args = parser.parse_args()
+
+#     # 建立数据库连接
+#     connection = connect_to_database(args)
+
+#     if connection:
+#         # 获取所有表
+#         tables = get_all_tables(connection)
+
+#         # 显示结果
+#         display_tables(tables)
+
+#         # 关闭数据库连接
+#         connection.close()
+
+# if __name__ == "__main__":
+#     main()
