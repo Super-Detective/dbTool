@@ -26,6 +26,6 @@ Update -database=SARS-CoV-2 -table=BCR -filepath='test.csv' -unique_column=bcr_i
 Description:
 --database：target databse
 --table：target table
---columns: select **columns** from table
+--columns: select **column(s)** from table
 --filepath: save or input filepath
 --unique_column: target columns to update or insert
