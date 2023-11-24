@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='dbTool',
+    name='my_database_tool',
     version='0.1',
     packages=find_packages(),
     install_requires=[
@@ -10,9 +10,9 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'Select = dbTool.Select:main',
-            'Table = dbTool.Table:main',
-            'Database = dbTool.Database:main',
+            'Select = my_database_tool.Select:main',
+            'Table = my_database_tool.Table:main',
+            'Database = my_database_tool.Database:main',
         ],
     },
 )
