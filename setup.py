@@ -21,7 +21,7 @@ setup(
     author_email='email@example.com',
     description='A set of tools for interacting with databases',
     long_description='This package provides command-line tools for various database operations.',
-    url='https://github.com/yourusername/dbTool',
+    url='https://github.com/chengxuyuanlm/dbTool',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
