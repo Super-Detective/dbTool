@@ -19,4 +19,13 @@ Done!
 Example:
 Database
 Table -database=SARS-CoV-2
-Select -database=SARS-CoV-2 -table=information -columns=id,name
+Select -database=SARS-CoV-2 -table=BCR -columns=batch_name,barcode,contig_id,cdr3 -conditions='contig_id like "%_2"' -limit=10 -save -filepath='save_patch.csv'
+Insert -database=SARS-CoV-2 -table=BCR -filepath='./test.csv' -unique_column=bcr_id
+Update -database=SARS-CoV-2 -table=BCR -filepath='test.csv' -unique_column=bcr_id
+
+Description:
+--database：target databse
+--table：target table
+--columns: select **columns** from table
+--filepath: save or input filepath
+--unique_column: target columns to update or insert
