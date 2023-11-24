@@ -10,9 +10,9 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'Select = my_database_tool.Select:main',
-            'Table = my_database_tool.Table:main',
-            'Database = my_database_tool.Database:main',
+            'Select = dbTool.Select:main',
+            'Table = dbTool.Table:main',
+            'Database = dbTool.Database:main',
         ],
     },
 )
