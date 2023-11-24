@@ -2,7 +2,7 @@ import argparse
 import csv
 import pymysql
 from tabulate import tabulate
-from config import DATABASE_CONFIG
+from .config import DATABASE_CONFIG
 
 def connect_to_database(database_name):
     config = DATABASE_CONFIG.copy()
