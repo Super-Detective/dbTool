@@ -10,11 +10,11 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'db select = dbTool.Select:main',
-            'db table = dbTool.Table:main',
-            'db database = dbTool.Database:main',
-            'db insert = dbTool.Insert:main',
-            'db update = dbTool.Update:main',
+            'Select = dbTool.Select:main',
+            'Table = dbTool.Table:main',
+            'Database = dbTool.Database:main',
+            'Insert = dbTool.Insert:main',
+            'Update = dbTool.Update:main',
         ],
     },
 )
