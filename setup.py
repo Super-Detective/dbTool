@@ -15,7 +15,7 @@ setup(
             'Database = dbTool.Database:main',
             'Insert = dbTool.Insert:main',
             'Update = dbTool.Update:main',
-            'Count = dbTool.Update:main',
+            'Count = dbTool.Count:main',
         ],
     },
     author='Ming',
