@@ -5,13 +5,6 @@ from tabulate import tabulate
 from .config import DATABASE_CONFIG
 from configparser import ConfigParser
 
-# 加载配置文件 config.ini
-config = ConfigParser()
-config.read('config.ini')
-
-# 从配置文件设置默认值
-DEFAULT_DATABASE = config.get('DEFAULT', 'DATABASE')
-DEFAULT_TABLE = config.get('DEFAULT', 'TABLE')
 
 def connect_to_database(database_name):
     config = DATABASE_CONFIG.copy()
@@ -98,8 +91,24 @@ def main():
 
         # 如果未提供数据库和表，使用默认值
     if not args.database:
+        # 加载配置文件 config.ini
+        config = ConfigParser()
+        config.read('config.ini')
+        
+        # 从配置文件设置默认值
+        DEFAULT_DATABASE = config.get('DEFAULT', 'DATABASE')
+        DEFAULT_TABLE = config.get('DEFAULT', 'TABLE')
+
         args.database = DEFAULT_DATABASE
     if not args.table:
+        # 加载配置文件 config.ini
+        config = ConfigParser()
+        config.read('config.ini')
+        
+        # 从配置文件设置默认值
+        DEFAULT_DATABASE = config.get('DEFAULT', 'DATABASE')
+        DEFAULT_TABLE = config.get('DEFAULT', 'TABLE')
+
         args.table = DEFAULT_TABLE
 
     # 如果未提供列名，默认为所有列（SELECT *）
