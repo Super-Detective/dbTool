@@ -64,8 +64,8 @@ def main():
     parser = argparse.ArgumentParser(description='Database Insert Tool')
 
     # 添加命令行参数
-    parser.add_argument('-database', type=str, help='Database name', required=True)
-    parser.add_argument('-table', type=str, help='Table name', required=True)
+    parser.add_argument('-database', type=str, help='Database name')
+    parser.add_argument('-table', type=str, help='Table name')
     parser.add_argument('-filepath', type=str, help='Filepath with data to insert', required=True)
     parser.add_argument('-unique_column', type=str, help='Column used for uniqueness constraint', required=True)
 
