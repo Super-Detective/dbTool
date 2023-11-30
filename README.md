@@ -35,7 +35,7 @@ Description:
 Database
 #show all databases
 
-#You can modify the configuration file config.ini to simplify the instructions:
+#You can create the configuration file config.ini in **current path** to simplify the instructions:
 nano /software/dbTool-main/config.ini
 **like**:
       [DEFAULT]
