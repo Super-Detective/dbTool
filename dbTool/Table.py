@@ -4,12 +4,7 @@ from tabulate import tabulate
 from .config import DATABASE_CONFIG
 from configparser import ConfigParser
 
-# 加载配置文件 config.ini
-config = ConfigParser()
-config.read('config.ini')
 
-# 从配置文件设置默认值
-DEFAULT_DATABASE = config.get('DEFAULT', 'DATABASE')
 
 
 def connect_to_database(database_name):
@@ -52,6 +47,12 @@ def main():
 
     # 如果未提供数据库和表，使用默认值
     if not args.database:
+        # 加载配置文件 config.ini
+        config = ConfigParser()
+        config.read('config.ini')
+        
+        # 从配置文件设置默认值
+        DEFAULT_DATABASE = config.get('DEFAULT', 'DATABASE')
         args.database = DEFAULT_DATABASE
 
     # 建立数据库连接
