@@ -47,7 +47,6 @@ def insert_data(connection, table, filepath, unique_column):
 
                         # 执行插入操作
                         sql_query = f'INSERT INTO {table} ({", ".join(columns)}) VALUES ({", ".join(values)});'
-                        print(sql_query)
                         cursor.execute(sql_query)
                     # else:
                     #     print(f"Record with '{unique_column}' value '{unique_value}' already exists. Skipping insertion.")
