@@ -105,9 +105,10 @@ def main():
     if connection:
         # 执行查询
         result, headers = execute_query(connection, args.table, args.columns, args.limit, args.conditions)
+        column_names = [header[0] for header in headers]
 
         # 显示结果
-        display_result(result, headers)
+        display_result(result, column_names)
 
         # 如果指定保存到 CSV 文件
         if args.save:
