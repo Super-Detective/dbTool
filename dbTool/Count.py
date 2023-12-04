@@ -123,9 +123,10 @@ def main():
         if args.show:
             # 执行查询
             result, headers = execute_query(connection, args.table, args.columns, args.limit, args.conditions)
+            column_names = [header[0] for header in headers]
 
             # 显示结果
-            display_result(result, headers)
+            display_result(result, column_names)
         else:
             record_count = count_records(connection, args.table, args.conditions)
             print(f"Number of records matching the conditions: {record_count}")
